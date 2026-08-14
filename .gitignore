@@ -1,0 +1,7 @@
+node_modules/
+dist/
+.env
+backend/bank.db
+backend/bank.db-journal
+backend/bank.db-wal
+backend/bank.db-shm
