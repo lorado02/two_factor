@@ -28,7 +28,7 @@ const totp = require('../../totp');
 const makeApp = require('../../testHelpers/makeApp');
 
 process.env.NODE_ENV = 'test';
-const JWT_SECRET = 'dev-secret-change-me'; // matches middleware/auth default
+const JWT_SECRET = process.env.JWT_SECRET || 'dev-secret-change-me'; // matches middleware/auth resolution
 
 // ── Shared test helpers ──────────────────────────────────────────────────────
 
@@ -1038,7 +1038,7 @@ describe('Middleware edge cases', () => {
   });
 
   test('expired token → 401', async () => {
-    const expired = jwt.sign({ userId }, 'dev-secret-change-me', { expiresIn: '0ms' });
+    const expired = jwt.sign({ userId }, JWT_SECRET, { expiresIn: '0ms' });
     const res = await request(app)
       .get('/api/accounts/me')
       .set('Authorization', `Bearer ${expired}`);
