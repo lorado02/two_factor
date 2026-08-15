@@ -5,11 +5,16 @@ const { requireAuth } = require('../middleware/auth');
 const router = express.Router();
 
 router.get('/me', requireAuth, (req, res) => {
-  const user = db.prepare('SELECT id, name, email FROM users WHERE id = ?').get(req.userId);
+  const user = db.prepare('SELECT id, name, email, twofa_enabled FROM users WHERE id = ?').get(req.userId);
   const account = db.prepare('SELECT account_number, balance_cents FROM accounts WHERE user_id = ?').get(req.userId);
 
   res.json({
-    user,
+    user: {
+      id: user.id,
+      name: user.name,
+      email: user.email,
+      twofaEnabled: !!user.twofa_enabled,
+    },
     account: {
       accountNumber: account.account_number,
       balanceCents: account.balance_cents,
