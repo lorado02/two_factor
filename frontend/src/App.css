@@ -195,3 +195,206 @@ th, td {
 .negative {
   color: var(--negative);
 }
+
+/* -----------------------------------------------------------------------
+   2FA — AuthForm OTP step
+------------------------------------------------------------------------ */
+.auth-card h2 {
+  text-align: center;
+  font-size: 1.25rem;
+  margin: 0.25rem 0 0.5rem;
+}
+
+.auth-card .muted {
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+/* Large OTP input matching the prototype */
+#otp-code {
+  text-align: center;
+  font-size: 1.5rem;
+  letter-spacing: 0.3em;
+  padding: 0.75rem;
+  border: 2px solid var(--primary);
+  border-radius: 10px;
+}
+
+.btn-verify {
+  width: 100%;
+  padding: 0.85rem;
+  font-size: 1.05rem;
+  border-radius: 10px;
+}
+
+.expiry-note {
+  text-align: center;
+  margin-top: 0.75rem;
+  font-size: 0.9rem;
+}
+
+hr {
+  border: none;
+  border-top: 1px solid var(--border);
+  margin: 1rem 0 0.5rem;
+}
+
+.alt-methods {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.link-btn {
+  background: none;
+  border: none;
+  color: var(--primary);
+  font-weight: 600;
+  cursor: pointer;
+  font-size: 0.95rem;
+  padding: 0;
+  text-decoration: none;
+}
+
+.link-btn:hover {
+  text-decoration: underline;
+}
+
+/* -----------------------------------------------------------------------
+   2FA — Security Settings panel
+------------------------------------------------------------------------ */
+.security-settings {
+  margin-top: 0;
+}
+
+.security-settings h2 {
+  margin-top: 0;
+}
+
+.status-on {
+  color: var(--positive);
+}
+
+.status-off {
+  color: var(--muted);
+}
+
+.security-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  margin-top: 0.75rem;
+}
+
+.security-actions button,
+.security-settings > button {
+  border: 1px solid var(--border);
+  background: var(--card);
+  border-radius: 8px;
+  padding: 0.55rem 1rem;
+  cursor: pointer;
+  font-size: 0.95rem;
+  text-align: left;
+}
+
+.security-actions button:hover {
+  background: var(--bg);
+}
+
+button.danger {
+  color: var(--negative);
+  border-color: var(--negative);
+}
+
+/* QR code */
+.qr-code {
+  display: block;
+  margin: 0.75rem auto;
+  max-width: 180px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 6px;
+}
+
+.manual-key {
+  font-size: 0.8rem;
+  word-break: break-all;
+  background: var(--bg);
+  padding: 2px 6px;
+  border-radius: 4px;
+}
+
+.setup-steps {
+  margin: 0 0 1rem;
+  padding-left: 1.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+/* Backup codes grid */
+.backup-codes-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.5rem;
+  margin: 1rem 0;
+}
+
+.backup-code {
+  font-family: monospace;
+  font-size: 1rem;
+  background: var(--bg);
+  padding: 0.4rem 0.75rem;
+  border-radius: 6px;
+  border: 1px solid var(--border);
+  text-align: center;
+  letter-spacing: 0.1em;
+}
+
+.backup-actions {
+  display: flex;
+  gap: 0.75rem;
+  margin-bottom: 0.75rem;
+}
+
+.backup-actions button {
+  flex: 1;
+  border: 1px solid var(--border);
+  background: var(--card);
+  border-radius: 8px;
+  padding: 0.5rem;
+  cursor: pointer;
+}
+
+.checkbox-label {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.9rem;
+  color: var(--text);
+  margin-bottom: 0.75rem;
+}
+
+.checkbox-label input[type="checkbox"] {
+  width: 1rem;
+  height: 1rem;
+}
+
+.form-actions {
+  display: flex;
+  gap: 0.75rem;
+}
+
+.form-actions button:last-child {
+  border: 1px solid var(--border);
+  background: var(--card);
+  border-radius: 8px;
+  padding: 0.55rem 1rem;
+  cursor: pointer;
+}
+
+.enrol-invite {
+  margin: 0.35rem 0 0.75rem;
+}
