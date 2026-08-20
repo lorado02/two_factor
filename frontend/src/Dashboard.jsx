@@ -315,6 +315,10 @@ export default function Dashboard({ token, onLogout }) {
   const [actionLoading, setActionLoading] = useState(false);
   const [twofaEnabled, setTwofaEnabled] = useState(false);
 
+  function isAuthError(message) {
+    return message === 'Invalid or expired token' || message === 'Not authenticated';
+  }
+
   async function refresh() {
     try {
       const [meData, txData] = await Promise.all([api.me(token), api.transactions(token)]);
@@ -322,6 +326,10 @@ export default function Dashboard({ token, onLogout }) {
       setTransactions(txData.transactions);
       setTwofaEnabled(!!meData.user.twofaEnabled);
     } catch (err) {
+      if (isAuthError(err.message)) {
+        onLogout();
+        return;
+      }
       setError(err.message);
     }
   }
@@ -340,6 +348,7 @@ export default function Dashboard({ token, onLogout }) {
       setDepositAmount('');
       await refresh();
     } catch (err) {
+      if (isAuthError(err.message)) { onLogout(); return; }
       setError(err.message);
     } finally {
       setActionLoading(false);
@@ -362,6 +371,7 @@ export default function Dashboard({ token, onLogout }) {
       setTransferCode('');
       await refresh();
     } catch (err) {
+      if (isAuthError(err.message)) { onLogout(); return; }
       setError(err.message);
     } finally {
       setActionLoading(false);
